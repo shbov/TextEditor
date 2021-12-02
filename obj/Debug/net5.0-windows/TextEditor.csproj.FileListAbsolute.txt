@@ -1,0 +1,16 @@
+\\vmware-host\Shared Folders\Рабочий стол\TextEditor\bin\Debug\net5.0-windows\TextEditor.exe
+\\vmware-host\Shared Folders\Рабочий стол\TextEditor\bin\Debug\net5.0-windows\TextEditor.deps.json
+\\vmware-host\Shared Folders\Рабочий стол\TextEditor\bin\Debug\net5.0-windows\TextEditor.runtimeconfig.json
+\\vmware-host\Shared Folders\Рабочий стол\TextEditor\bin\Debug\net5.0-windows\TextEditor.runtimeconfig.dev.json
+\\vmware-host\Shared Folders\Рабочий стол\TextEditor\bin\Debug\net5.0-windows\TextEditor.dll
+\\vmware-host\Shared Folders\Рабочий стол\TextEditor\bin\Debug\net5.0-windows\ref\TextEditor.dll
+\\vmware-host\Shared Folders\Рабочий стол\TextEditor\bin\Debug\net5.0-windows\TextEditor.pdb
+\\vmware-host\Shared Folders\Рабочий стол\TextEditor\obj\Debug\net5.0-windows\TextEditor.csproj.AssemblyReference.cache
+\\vmware-host\Shared Folders\Рабочий стол\TextEditor\obj\Debug\net5.0-windows\TextEditor.GeneratedMSBuildEditorConfig.editorconfig
+\\vmware-host\Shared Folders\Рабочий стол\TextEditor\obj\Debug\net5.0-windows\TextEditor.AssemblyInfoInputs.cache
+\\vmware-host\Shared Folders\Рабочий стол\TextEditor\obj\Debug\net5.0-windows\TextEditor.AssemblyInfo.cs
+\\vmware-host\Shared Folders\Рабочий стол\TextEditor\obj\Debug\net5.0-windows\TextEditor.csproj.CoreCompileInputs.cache
+\\vmware-host\Shared Folders\Рабочий стол\TextEditor\obj\Debug\net5.0-windows\TextEditor.dll
+\\vmware-host\Shared Folders\Рабочий стол\TextEditor\obj\Debug\net5.0-windows\ref\TextEditor.dll
+\\vmware-host\Shared Folders\Рабочий стол\TextEditor\obj\Debug\net5.0-windows\TextEditor.pdb
+\\vmware-host\Shared Folders\Рабочий стол\TextEditor\obj\Debug\net5.0-windows\TextEditor.genruntimeconfig.cache
