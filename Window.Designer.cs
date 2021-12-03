@@ -1,4 +1,4 @@
-﻿namespace TextEditor
+namespace TextEditor
 {
     partial class TextEditor
     {
@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.новыйФайлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddNewFile = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьФайлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,8 +62,11 @@
             this.темыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.светлаяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.темнаяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.закрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -83,7 +87,7 @@
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.новыйФайлToolStripMenuItem,
+            this.AddNewFile,
             this.открытьФайлToolStripMenuItem,
             this.toolStripSeparator1,
             this.сохранитьToolStripMenuItem,
@@ -95,11 +99,12 @@
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(90, 36);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
-            // новыйФайлToolStripMenuItem
+            // AddNewFile
             // 
-            this.новыйФайлToolStripMenuItem.Name = "новыйФайлToolStripMenuItem";
-            this.новыйФайлToolStripMenuItem.Size = new System.Drawing.Size(386, 44);
-            this.новыйФайлToolStripMenuItem.Text = "Новый файл";
+            this.AddNewFile.Name = "AddNewFile";
+            this.AddNewFile.Size = new System.Drawing.Size(386, 44);
+            this.AddNewFile.Text = "Новый файл";
+            this.AddNewFile.Click += new System.EventHandler(this.AddNewFile_Click);
             // 
             // открытьФайлToolStripMenuItem
             // 
@@ -302,27 +307,42 @@
             this.темнаяToolStripMenuItem.Size = new System.Drawing.Size(235, 44);
             this.темнаяToolStripMenuItem.Text = "Темная";
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 44);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1486, 916);
-            this.tabControl1.TabIndex = 1;
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.Location = new System.Drawing.Point(0, 44);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(1486, 916);
+            this.tabControl.TabIndex = 1;
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.закрытьToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(301, 86);
+            // 
+            // закрытьToolStripMenuItem
+            // 
+            this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
+            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(300, 38);
+            this.закрытьToolStripMenuItem.Text = "Закрыть";
             // 
             // TextEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1486, 960);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.menuStrip1);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "TextEditor";
             this.Text = "TextEditor";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,7 +352,7 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem новыйФайлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AddNewFile;
         private System.Windows.Forms.ToolStripMenuItem открытьФайлToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
@@ -363,6 +383,8 @@
         private System.Windows.Forms.ToolStripMenuItem жирныйToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem подчеркнутыйToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem зачеркнутыйToolStripMenuItem;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem;
     }
 }

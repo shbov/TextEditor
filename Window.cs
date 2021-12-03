@@ -12,19 +12,19 @@ namespace TextEditor
 {
     public partial class TextEditor : Form
     {
+        private TabManagerClass tabs;
+        
         public TextEditor()
         {
             InitializeComponent();
+
+            tabs = new(tabControl);
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
+        private void AddNewFile_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void tabControl1_Click(object sender, EventArgs e)
-        {
-
+            var tabClass = new TabClass(contextMenuStrip);
+            tabs.Add(tabClass);
         }
     }
 }
