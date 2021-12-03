@@ -10,12 +10,21 @@ using System.Windows.Forms;
 
 namespace TextEditor
 {
-    public partial class Form1 : Form
+    public partial class TextEditor : Form
     {
-        public Form1()
+        public TextEditor()
         {
             InitializeComponent();
         }
 
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -14,3 +14,6 @@
 \\vmware-host\Shared Folders\Рабочий стол\TextEditor\obj\Debug\net5.0-windows\ref\TextEditor.dll
 \\vmware-host\Shared Folders\Рабочий стол\TextEditor\obj\Debug\net5.0-windows\TextEditor.pdb
 \\vmware-host\Shared Folders\Рабочий стол\TextEditor\obj\Debug\net5.0-windows\TextEditor.genruntimeconfig.cache
+\\vmware-host\Shared Folders\Рабочий стол\TextEditor\obj\Debug\net5.0-windows\TextEditor.Properties.Resources.resources
+\\vmware-host\Shared Folders\Рабочий стол\TextEditor\obj\Debug\net5.0-windows\TextEditor.csproj.GenerateResource.cache
+\\vmware-host\Shared Folders\Рабочий стол\TextEditor\obj\Debug\net5.0-windows\TextEditor.TextEditor.resources
