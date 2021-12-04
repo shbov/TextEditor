@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextEditor", "TextEditor.csproj", "{1C850408-7922-471A-81E2-BFF67020A2BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notepad", "Notepad.csproj", "{1C850408-7922-471A-81E2-BFF67020A2BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/W2534SN+atX647DU3gA7Ly9oNnominqoKdhYdsA5bietFI5+s+m4e8cszXxNFE2YvncZbX4crGHetrJhlQq3g==",
+  "dgSpecHash": "efZh9toQ8BYtEBvsmm6j96fP9z/l1Ss/FuxZrw93kNEiZ+QtlxFJ1aB/0IWIirzgBwH9VmAMH04+5c9UXwwDaw==",
   "success": true,
-  "projectFilePath": "\\\\vmware-host\\Shared Folders\\Рабочий стол\\TextEditor\\TextEditor.csproj",
+  "projectFilePath": "\\\\vmware-host\\Shared Folders\\Рабочий стол\\TextEditor\\Notepad.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

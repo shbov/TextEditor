@@ -15,8 +15,9 @@ namespace TextEditor
         public bool IsTabEdited { get; set; }
         public bool IsTabSaved { get; set; } 
         public string Name { get; set; }
-        public string SavedPath { get;  set; } = string.Empty;
-        private ContextMenuStrip _contextMenuStrip;
+        public string FileName { get; set; }
+        public string SavedPath { get;  set; }
+        private ContextMenuStrip ContextMenuStrip { get; set; }
 
         public TabClass(ContextMenuStrip contextMenuStrip) : this(contextMenuStrip, string.Empty, string.Empty)
         {
@@ -24,15 +25,23 @@ namespace TextEditor
 
         public TabClass(ContextMenuStrip contextMenuStrip, string path, string text)
         {
-            _contextMenuStrip = contextMenuStrip;
-            Name = "Untitled";
-         
+            ContextMenuStrip = contextMenuStrip;
+
             if (!path.Equals(string.Empty))
             {
                 IsTabSaved = true;
+                IsTabEdited = false;
                 SavedPath = path;
-
                 Name = Path.GetFileName(path);
+                FileName = Name;
+            }
+            else
+            {
+                Name = "Untitled*";
+                FileName = "Untitled";
+                SavedPath = string.Empty;
+                IsTabEdited = true;
+                IsTabSaved = false;
             }
 
             TabPage = new TabPage
@@ -46,7 +55,7 @@ namespace TextEditor
                         Dock = DockStyle.Fill,
                         Rtf = text,
                         BorderStyle = BorderStyle.None,
-                        ContextMenuStrip = _contextMenuStrip,
+                        ContextMenuStrip = ContextMenuStrip,
                     };
                 else
                 _textBox = new RichTextBox
@@ -54,19 +63,68 @@ namespace TextEditor
                         Dock = DockStyle.Fill,
                         Text = text,
                         BorderStyle = BorderStyle.None,
-                        ContextMenuStrip = _contextMenuStrip,
+                        ContextMenuStrip = ContextMenuStrip,
                     };
 
-            _textBox.TextChanged += TabPage_TextChanged;
-                TabPage.Controls.Add(_textBox);
+            _textBox.TextChanged += new EventHandler(TabPage_TextChanged);
+            TabPage.Controls.Add(_textBox);
         }
 
-        public void TabPage_TextChanged(object sender, EventArgs e)
+        private void TabPage_TextChanged(object sender, EventArgs e)
         {
-            this.IsTabEdited = true;
+            IsTabEdited = true;
+            Name = $"{FileName}*";
+            TabPage.Text = Name;
         }
 
         public bool IfFileIsRtf()
           => Path.GetExtension(SavedPath).Equals(".rtf");
+
+        public void Save()
+        {
+            if (!IsTabEdited) return;
+
+            if (!IsTabSaved)
+            {
+                SaveFileAs();
+                return;
+            }
+
+            try
+            {
+                File.WriteAllText(SavedPath, IfFileIsRtf()?_textBox.Rtf:_textBox.Text);
+                IsTabSaved = true;
+                IsTabEdited = false;
+                Name = FileName;
+                TabPage.Text = Name;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show($"Не удалось сохранить файл: {exception.Message}", "Error");
+            }
+        }
+
+        public void SaveFileAs()
+        {
+            var dialog = new SaveFileDialog();
+            if (dialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            try
+            {
+                File.WriteAllText(dialog.FileName, IfFileIsRtf() ? _textBox.Rtf : _textBox.Text);
+                IsTabSaved = true;
+                IsTabEdited = false;
+                Name = Path.GetFileName(dialog.FileName);
+                FileName = Name;
+                SavedPath = dialog.FileName;
+
+                TabPage.Text = Name;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Ошибка при сохранении файла: {e.Message}", "Error");
+            }
+        }
     }
 }

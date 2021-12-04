@@ -27,5 +27,38 @@ namespace TextEditor
 
             _tabs.Add(tab.TabPage, tab);
         }
-    }
+
+        public TabClass? GetCurrent()
+        {
+            if (_tabControl.SelectedTab == null) return null;
+            return _tabs[_tabControl.SelectedTab];
+        }
+
+        public void SaveAll()
+        {
+            var unsavedTabs = _tabs.Where(item => !item.Value.IsTabSaved);
+            foreach (var item in unsavedTabs)
+                item.Value.Save();
+        }
+
+        public void CloseCurrent()
+        {
+                var tab = _tabControl.SelectedTab;
+            if(!_tabs[tab].IsTabSaved)
+            {
+                var saveOrExit = MessageBox.Show("Сохранить файл перед закрытием?", "Информация", MessageBoxButtons.YesNo);
+                if(saveOrExit == DialogResult.Yes)
+                    GetCurrent()?.Save();
+                else return;
+            }
+
+                _tabs.Remove(tab);
+
+                var index = _tabControl.TabPages.IndexOf(tab);
+                _tabControl.TabPages.RemoveAt(index);
+
+                if (_tabControl.TabPages.Count != 0)
+                    _tabControl.SelectedTab = _tabControl.TabPages[Math.Max(index - 1, 0)];
+            }
+        }
 }

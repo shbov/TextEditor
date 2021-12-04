@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "\\\\vmware-host\\Shared Folders\\Рабочий стол\\TextEditor\\TextEditor.csproj",
-      "projectName": "TextEditor",
-      "projectPath": "\\\\vmware-host\\Shared Folders\\Рабочий стол\\TextEditor\\TextEditor.csproj",
+      "projectUniqueName": "\\\\vmware-host\\Shared Folders\\Рабочий стол\\TextEditor\\Notepad.csproj",
+      "projectName": "Notepad",
+      "projectPath": "\\\\vmware-host\\Shared Folders\\Рабочий стол\\TextEditor\\Notepad.csproj",
       "packagesPath": "C:\\Users\\Andrew Shubnikov\\.nuget\\packages\\",
       "outputPath": "\\\\vmware-host\\Shared Folders\\Рабочий стол\\TextEditor\\obj\\",
       "projectStyle": "PackageReference",
