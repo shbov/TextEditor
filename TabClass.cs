@@ -27,7 +27,6 @@ namespace TextEditor
             _contextMenuStrip = contextMenuStrip;
             Name = "Untitled";
          
-
             if (!path.Equals(string.Empty))
             {
                 IsTabSaved = true;
@@ -36,11 +35,12 @@ namespace TextEditor
                 Name = Path.GetFileName(path);
             }
 
-            TabPage = new TabPage();
-            TabPage.Text = Name;
+            TabPage = new TabPage
+            {
+                Text = Name
+            };
 
-      
-                if (IfFileIsRtf())
+            if (IfFileIsRtf())
                 _textBox = new RichTextBox
                     {
                         Dock = DockStyle.Fill,

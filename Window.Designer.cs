@@ -222,31 +222,31 @@ namespace TextEditor
             // обычныйToolStripMenuItem
             // 
             this.обычныйToolStripMenuItem.Name = "обычныйToolStripMenuItem";
-            this.обычныйToolStripMenuItem.Size = new System.Drawing.Size(311, 44);
+            this.обычныйToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.обычныйToolStripMenuItem.Text = "Обычный";
             // 
             // курсивныйToolStripMenuItem
             // 
             this.курсивныйToolStripMenuItem.Name = "курсивныйToolStripMenuItem";
-            this.курсивныйToolStripMenuItem.Size = new System.Drawing.Size(311, 44);
+            this.курсивныйToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.курсивныйToolStripMenuItem.Text = "Курсивный";
             // 
             // жирныйToolStripMenuItem
             // 
             this.жирныйToolStripMenuItem.Name = "жирныйToolStripMenuItem";
-            this.жирныйToolStripMenuItem.Size = new System.Drawing.Size(311, 44);
+            this.жирныйToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.жирныйToolStripMenuItem.Text = "Жирный";
             // 
             // подчеркнутыйToolStripMenuItem
             // 
             this.подчеркнутыйToolStripMenuItem.Name = "подчеркнутыйToolStripMenuItem";
-            this.подчеркнутыйToolStripMenuItem.Size = new System.Drawing.Size(311, 44);
+            this.подчеркнутыйToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.подчеркнутыйToolStripMenuItem.Text = "Подчеркнутый";
             // 
             // зачеркнутыйToolStripMenuItem
             // 
             this.зачеркнутыйToolStripMenuItem.Name = "зачеркнутыйToolStripMenuItem";
-            this.зачеркнутыйToolStripMenuItem.Size = new System.Drawing.Size(311, 44);
+            this.зачеркнутыйToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.зачеркнутыйToolStripMenuItem.Text = "Зачеркнутый";
             // 
             // настройкиToolStripMenuItem
@@ -314,7 +314,7 @@ namespace TextEditor
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(1486, 916);
-            this.tabControl.TabIndex = 1;
+            this.tabControl.TabIndex = 2;
             // 
             // contextMenuStrip
             // 
