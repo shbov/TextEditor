@@ -1,36 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TextEditor
+namespace Notepad
 {
     public partial class Notepad : Form
     {
-        private TabManagerClass tabs;
-        
+        private readonly TabManagerClass _tabs;
+
         public Notepad()
         {
             InitializeComponent();
 
-            tabs = new(tabControl);
+            _tabs = new TabManagerClass(tabControl);
         }
 
         private void AddNewFile_Click(object sender, EventArgs e)
         {
             var tabClass = new TabClass(contextMenuStrip);
-            tabs.Add(tabClass);
+            _tabs.Add(tabClass);
         }
 
         private void выделитьВесьТекстToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
         }
 
         private void OpenFile(object sender, EventArgs e)
@@ -43,34 +35,32 @@ namespace TextEditor
             try
             {
                 var tabClass = new TabClass(contextMenuStrip, dialog.FileName, File.ReadAllText(dialog.FileName));
-                tabs.Add(tabClass);
-
-                return;
+                _tabs.Add(tabClass);
             }
             catch (Exception exeption)
             {
                 MessageBox.Show($"Ошибка при открытии файла: {exeption.Message}", "Error");
-                return;
             }
         }
 
         private void SaveFile(object sender, EventArgs e)
         {
-            tabs.GetCurrent()?.Save();
+            _tabs.GetCurrent()?.Save();
         }
+
         private void SaveFileAs(object sender, EventArgs e)
         {
-            tabs.GetCurrent()?.SaveFileAs();
+            _tabs.GetCurrent()?.SaveFileAs();
         }
 
         private void CloseTab(object sender, EventArgs e)
         {
-            tabs.CloseCurrent();
+            _tabs.CloseCurrent();
         }
 
         private void SaveAllFiles(object sender, EventArgs e)
         {
-            tabs.SaveAll();
+            _tabs.SaveAll();
         }
     }
 }

@@ -1,23 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TextEditor
+namespace Notepad
 {
     internal class TabClass
     {
-        public TabPage TabPage { get; }
-        private RichTextBox _textBox;
-        public bool IsTabEdited { get; set; }
-        public bool IsTabSaved { get; set; } 
-        public string Name { get; set; }
-        public string FileName { get; set; }
-        public string SavedPath { get;  set; }
-        private ContextMenuStrip ContextMenuStrip { get; set; }
+        private readonly RichTextBox _textBox;
 
         public TabClass(ContextMenuStrip contextMenuStrip) : this(contextMenuStrip, string.Empty, string.Empty)
         {
@@ -51,24 +40,32 @@ namespace TextEditor
 
             if (IfFileIsRtf())
                 _textBox = new RichTextBox
-                    {
-                        Dock = DockStyle.Fill,
-                        Rtf = text,
-                        BorderStyle = BorderStyle.None,
-                        ContextMenuStrip = ContextMenuStrip,
-                    };
-                else
+                {
+                    Dock = DockStyle.Fill,
+                    Rtf = text,
+                    BorderStyle = BorderStyle.None,
+                    ContextMenuStrip = ContextMenuStrip
+                };
+            else
                 _textBox = new RichTextBox
-                    {
-                        Dock = DockStyle.Fill,
-                        Text = text,
-                        BorderStyle = BorderStyle.None,
-                        ContextMenuStrip = ContextMenuStrip,
-                    };
+                {
+                    Dock = DockStyle.Fill,
+                    Text = text,
+                    BorderStyle = BorderStyle.None,
+                    ContextMenuStrip = ContextMenuStrip
+                };
 
-            _textBox.TextChanged += new EventHandler(TabPage_TextChanged);
+            _textBox.TextChanged += TabPage_TextChanged;
             TabPage.Controls.Add(_textBox);
         }
+
+        public TabPage TabPage { get; }
+        public bool IsTabEdited { get; set; }
+        public bool IsTabSaved { get; set; }
+        public string Name { get; set; }
+        public string FileName { get; set; }
+        public string SavedPath { get; set; }
+        private ContextMenuStrip ContextMenuStrip { get; }
 
         private void TabPage_TextChanged(object sender, EventArgs e)
         {
@@ -78,7 +75,9 @@ namespace TextEditor
         }
 
         public bool IfFileIsRtf()
-          => Path.GetExtension(SavedPath).Equals(".rtf");
+        {
+            return Path.GetExtension(SavedPath).Equals(".rtf");
+        }
 
         public void Save()
         {
@@ -92,7 +91,7 @@ namespace TextEditor
 
             try
             {
-                File.WriteAllText(SavedPath, IfFileIsRtf()?_textBox.Rtf:_textBox.Text);
+                File.WriteAllText(SavedPath, IfFileIsRtf() ? _textBox.Rtf : _textBox.Text);
                 IsTabSaved = true;
                 IsTabEdited = false;
                 Name = FileName;

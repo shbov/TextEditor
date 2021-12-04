@@ -1,4 +1,4 @@
-namespace TextEditor
+namespace Notepad
 {
     partial class Notepad
     {

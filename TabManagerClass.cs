@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TextEditor
+namespace Notepad
 {
     internal class TabManagerClass
     {
         private readonly TabControl _tabControl;
-        private readonly Dictionary<TabPage, TabClass> _tabs = new Dictionary<TabPage, TabClass>();
+        private readonly Dictionary<TabPage, TabClass> _tabs = new();
 
         public TabManagerClass(TabControl tabControl)
         {
@@ -43,22 +41,23 @@ namespace TextEditor
 
         public void CloseCurrent()
         {
-                var tab = _tabControl.SelectedTab;
-            if(!_tabs[tab].IsTabSaved)
+            var tab = _tabControl.SelectedTab;
+            if (!_tabs[tab].IsTabSaved)
             {
-                var saveOrExit = MessageBox.Show("Сохранить файл перед закрытием?", "Информация", MessageBoxButtons.YesNo);
-                if(saveOrExit == DialogResult.Yes)
+                var saveOrExit = MessageBox.Show("Сохранить файл перед закрытием?", "Информация",
+                    MessageBoxButtons.YesNo);
+                if (saveOrExit == DialogResult.Yes)
                     GetCurrent()?.Save();
                 else return;
             }
 
-                _tabs.Remove(tab);
+            _tabs.Remove(tab);
 
-                var index = _tabControl.TabPages.IndexOf(tab);
-                _tabControl.TabPages.RemoveAt(index);
+            var index = _tabControl.TabPages.IndexOf(tab);
+            _tabControl.TabPages.RemoveAt(index);
 
-                if (_tabControl.TabPages.Count != 0)
-                    _tabControl.SelectedTab = _tabControl.TabPages[Math.Max(index - 1, 0)];
-            }
+            if (_tabControl.TabPages.Count != 0)
+                _tabControl.SelectedTab = _tabControl.TabPages[Math.Max(index - 1, 0)];
         }
+    }
 }
