@@ -59,5 +59,50 @@ namespace Notepad.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Не удалось сохранить файл: {0}.
+        /// </summary>
+        internal static string ErrorSave {
+            get {
+                return ResourceManager.GetString("ErrorSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ошибка: сохраните или откройте файл .rtf!.
+        /// </summary>
+        internal static string OnlyRtf {
+            get {
+                return ResourceManager.GetString("OnlyRtf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ошибка при открытии файла: {0}.
+        /// </summary>
+        internal static string OpenError {
+            get {
+                return ResourceManager.GetString("OpenError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Не все файлы сохранены. Вы действительно хотите выйти?.
+        /// </summary>
+        internal static string SaveBeforeExit {
+            get {
+                return ResourceManager.GetString("SaveBeforeExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сохранить файл перед закрытием?.
+        /// </summary>
+        internal static string SaveInfo {
+            get {
+                return ResourceManager.GetString("SaveInfo", resourceCulture);
+            }
+        }
     }
 }

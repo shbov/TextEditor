@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using Notepad.Properties;
 
 namespace Notepad
 {
@@ -64,7 +65,7 @@ namespace Notepad
 
         public TabPage TabPage { get; }
         public bool IsTabEdited { get; set; }
-        public bool IsTabSaved { get; set; }
+        public bool IsTabSaved { get; private set; }
         public string Name { get; set; }
         public string FileName { get; set; }
         public string SavedPath { get; set; }
@@ -77,7 +78,7 @@ namespace Notepad
             TabPage.Text = Name;
         }
 
-        public bool IfFileIsRtf()
+        private bool IfFileIsRtf()
         {
             return Path.GetExtension(SavedPath).Equals(".rtf");
         }
@@ -132,7 +133,7 @@ namespace Notepad
             }
             catch (Exception exception)
             {
-                MessageBox.Show($"Не удалось сохранить файл: {exception.Message}", "Error");
+                MessageBox.Show(string.Format(Resources.ErrorSave, exception.Message), "Error");
             }
         }
 
@@ -155,7 +156,7 @@ namespace Notepad
             }
             catch (Exception e)
             {
-                MessageBox.Show($"Ошибка при сохранении файла: {e.Message}", "Error");
+                MessageBox.Show(string.Format(Resources.ErrorSave, e.Message), "Error");
             }
         }
 
@@ -219,11 +220,11 @@ namespace Notepad
                 FontStyle.Underline | _textBox.SelectionFont.Style);
         }
 
-        public bool AllowRtfOnly()
+        private bool AllowRtfOnly()
         {
             if (IfFileIsRtf()) return true;
 
-            MessageBox.Show("Ошибка: сохраните или откройте файл .rtf!", "Error", MessageBoxButtons.OK);
+            MessageBox.Show(Resources.OnlyRtf, "Error", MessageBoxButtons.OK);
             return false;
         }
     }

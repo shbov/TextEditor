@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using Notepad.Properties;
 
 namespace Notepad
 {
@@ -10,16 +11,17 @@ namespace Notepad
         private readonly TabManagerClass _tabs;
 
         private Theme s_theme = Theme.Light;
+
         public Notepad()
         {
             InitializeComponent();
 
             _tabs = new TabManagerClass(tabControl);
-            this.SetLightTheme(null,null);
-            this.SetTimerEvery30Sec(null,null);
+            SetLightTheme(null, null);
+            SetTimerEvery30Sec(null, null);
         }
 
-        public Notepad(bool isNew):this()
+        public Notepad(bool isNew) : this()
         {
             AddNewFile_Click(null, null);
         }
@@ -39,12 +41,13 @@ namespace Notepad
 
             try
             {
-                var tabClass = new TabClass(contextMenuStrip, dialog.FileName, File.ReadAllText(dialog.FileName), s_theme);
+                var tabClass = new TabClass(contextMenuStrip, dialog.FileName, File.ReadAllText(dialog.FileName),
+                    s_theme);
                 _tabs.Add(tabClass);
             }
-            catch (Exception exeption)
+            catch (Exception exception)
             {
-                MessageBox.Show($"Ошибка при открытии файла: {exeption.Message}", "Error");
+                MessageBox.Show(string.Format(Resources.OpenError, exception.Message), "Error");
             }
         }
 
@@ -78,7 +81,7 @@ namespace Notepad
                 return;
             }
 
-            var saveOrExit = MessageBox.Show("Не все файлы сохранены. Вы действительно хотите выйти?", "Информация",
+            var saveOrExit = MessageBox.Show(Resources.SaveBeforeExit, "Информация",
                 MessageBoxButtons.YesNo);
             if (saveOrExit == DialogResult.Yes)
             {
@@ -129,6 +132,7 @@ namespace Notepad
 
             _tabs.GetCurrent()?.ChangeTheme(s_theme);
         }
+
         private void SetLightTheme(object? sender, EventArgs? e)
         {
             s_theme = Theme.Light;
@@ -139,6 +143,7 @@ namespace Notepad
 
             _tabs.ChangeTheme(s_theme);
         }
+
         private void SetTimerEverySec(object? sender, EventArgs? e)
         {
             everySecButton.Checked = !everySecButton.Checked;
@@ -173,38 +178,38 @@ namespace Notepad
 
         private void TimerTick(object? sender, EventArgs? e)
         {
-            this._tabs.SaveAllExistedFiles();
+            _tabs.SaveAllExistedFiles();
         }
 
         private void NewExternalFile(object sender, EventArgs e)
         {
-            var newForm =new Notepad(true);
+            var newForm = new Notepad(true);
             newForm.Show();
         }
 
         private void MakeRegularFont(object sender, EventArgs e)
         {
-            this._tabs.GetCurrent()?.Regular();
+            _tabs.GetCurrent()?.Regular();
         }
 
         private void MakeItalicFont(object sender, EventArgs e)
         {
-            this._tabs.GetCurrent()?.Italic();
+            _tabs.GetCurrent()?.Italic();
         }
 
         private void MakeBoldFont(object sender, EventArgs e)
         {
-            this._tabs.GetCurrent()?.Bold();
+            _tabs.GetCurrent()?.Bold();
         }
 
         private void MakeUnderlineFont(object sender, EventArgs e)
         {
-            this._tabs.GetCurrent()?.Underline();
+            _tabs.GetCurrent()?.Underline();
         }
 
         private void MakeCrossFont(object sender, EventArgs e)
         {
-            this._tabs.GetCurrent()?.Cross();
+            _tabs.GetCurrent()?.Cross();
         }
     }
 }

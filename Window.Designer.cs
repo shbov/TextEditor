@@ -41,6 +41,7 @@ namespace Notepad
             this.сохранитьВсеФайлыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.закрытьПриложениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.редактированиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вернутьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,7 +114,8 @@ namespace Notepad
             this.сохранитьКакToolStripMenuItem,
             this.сохранитьВсеФайлыToolStripMenuItem,
             this.toolStripSeparator2,
-            this.выйтиToolStripMenuItem});
+            this.выйтиToolStripMenuItem,
+            this.закрытьПриложениеToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(90, 38);
             this.файлToolStripMenuItem.Text = "Файл";
@@ -190,6 +192,16 @@ namespace Notepad
             this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(605, 44);
             this.выйтиToolStripMenuItem.Text = "Закрыть файл";
             this.выйтиToolStripMenuItem.Click += new System.EventHandler(this.CloseTab);
+            // 
+            // закрытьПриложениеToolStripMenuItem
+            // 
+            this.закрытьПриложениеToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("закрытьПриложениеToolStripMenuItem.Image")));
+            this.закрытьПриложениеToolStripMenuItem.Name = "закрытьПриложениеToolStripMenuItem";
+            this.закрытьПриложениеToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.W)));
+            this.закрытьПриложениеToolStripMenuItem.Size = new System.Drawing.Size(605, 44);
+            this.закрытьПриложениеToolStripMenuItem.Text = "Закрыть приложение";
+            this.закрытьПриложениеToolStripMenuItem.Click += new System.EventHandler(this.CloseApp);
             // 
             // редактированиеToolStripMenuItem
             // 
@@ -607,5 +619,6 @@ namespace Notepad
         private System.Windows.Forms.ToolStripMenuItem жирныйToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem подчеркнутыйToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem зачеркнутыйToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem закрытьПриложениеToolStripMenuItem;
     }
 }

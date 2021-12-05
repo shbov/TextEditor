@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Notepad.Properties;
 
 namespace Notepad
 {
@@ -17,9 +18,6 @@ namespace Notepad
 
         public void Add(TabClass tab)
         {
-            if (tab == null)
-                return;
-
             _tabControl.TabPages.Add(tab.TabPage);
             _tabControl.SelectedTab = tab.TabPage;
 
@@ -28,8 +26,7 @@ namespace Notepad
 
         public TabClass? GetCurrent()
         {
-            if (_tabControl.SelectedTab == null) return null;
-            return _tabs[_tabControl.SelectedTab];
+            return _tabControl.SelectedTab == null ? null : _tabs[_tabControl.SelectedTab];
         }
 
         public List<TabClass> GetUnsaved()
@@ -37,7 +34,7 @@ namespace Notepad
             return _tabs.Where(item => !item.Value.IsTabSaved).Select(item => item.Value).ToList();
         }
 
-        public List<TabClass> GetSavedTabs()
+        private List<TabClass> GetSavedTabs()
         {
             return _tabs.Where(item => item.Value.IsTabSaved).Select(item => item.Value).ToList();
         }
@@ -63,7 +60,7 @@ namespace Notepad
             var tab = _tabControl.SelectedTab;
             if (!_tabs[tab].IsTabSaved)
             {
-                var saveOrExit = MessageBox.Show("Сохранить файл перед закрытием?", "Информация",
+                var saveOrExit = MessageBox.Show(Resources.SaveInfo, "Информация",
                     MessageBoxButtons.YesNo);
                 if (saveOrExit == DialogResult.Yes)
                     GetCurrent()?.Save();
@@ -78,10 +75,10 @@ namespace Notepad
                 _tabControl.SelectedTab = _tabControl.TabPages[Math.Max(index - 1, 0)];
         }
 
-        public void ChangeTheme(Theme s_theme)
+        public void ChangeTheme(Theme theme)
         {
             foreach (var item in _tabs)
-                item.Value.ChangeTheme(s_theme);
+                item.Value.ChangeTheme(theme);
         }
     }
 }
