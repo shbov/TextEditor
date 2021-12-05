@@ -37,6 +37,11 @@ namespace Notepad
             return _tabs.Where(item => !item.Value.IsTabSaved).Select(item => item.Value).ToList();
         }
 
+        public List<TabClass> GetSavedTabs()
+        {
+            return _tabs.Where(item => item.Value.IsTabSaved).Select(item => item.Value).ToList();
+        }
+
         public void SaveAll()
         {
             var unsavedTabs = GetUnsaved();
@@ -44,8 +49,17 @@ namespace Notepad
                 item.Save();
         }
 
+        public void SaveAllExistedFiles()
+        {
+            var savedTabs = GetSavedTabs();
+            foreach (var item in savedTabs)
+                item.Save();
+        }
+
         public void CloseCurrent()
         {
+            if (_tabs.Count == 0) return;
+
             var tab = _tabControl.SelectedTab;
             if (!_tabs[tab].IsTabSaved)
             {
@@ -53,7 +67,6 @@ namespace Notepad
                     MessageBoxButtons.YesNo);
                 if (saveOrExit == DialogResult.Yes)
                     GetCurrent()?.Save();
-                else return;
             }
 
             _tabs.Remove(tab);
@@ -67,7 +80,7 @@ namespace Notepad
 
         public void ChangeTheme(Theme s_theme)
         {
-            foreach(var item in _tabs) 
+            foreach (var item in _tabs)
                 item.Value.ChangeTheme(s_theme);
         }
     }

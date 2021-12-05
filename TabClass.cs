@@ -9,14 +9,15 @@ namespace Notepad
     {
         private readonly RichTextBox _textBox;
 
-        public TabClass(ContextMenuStrip contextMenuStrip, Theme theme) : this(contextMenuStrip, string.Empty, string.Empty, theme)
+        public TabClass(ContextMenuStrip contextMenuStrip, Theme theme) : this(contextMenuStrip, string.Empty,
+            string.Empty, theme)
         {
         }
 
         public TabClass(ContextMenuStrip contextMenuStrip, string path, string text, Theme theme)
         {
             ContextMenuStrip = contextMenuStrip;
-            
+
             if (!path.Equals(string.Empty))
             {
                 IsTabSaved = true;
@@ -100,10 +101,12 @@ namespace Notepad
         {
             _textBox.Redo();
         }
+
         public void Undo()
         {
             _textBox.Undo();
         }
+
         public void Copy()
         {
             _textBox.Copy();
@@ -162,14 +165,66 @@ namespace Notepad
             {
                 case Theme.Dark:
                     _textBox.ForeColor = Color.White;
-                    _textBox.BackColor = Color.Black;
+                    _textBox.BackColor = Color.DarkGray;
                     return;
-                    case Theme.Light:
+                case Theme.Light:
                     _textBox.ForeColor = Color.Black;
                     _textBox.BackColor = Color.White;
                     return;
-
             }
+        }
+
+        public void Bold()
+        {
+            if (!AllowRtfOnly()) return;
+
+            _textBox.SelectionFont = new Font(
+                _textBox.SelectionFont,
+                FontStyle.Bold | _textBox.SelectionFont.Style);
+        }
+
+        public void Italic()
+        {
+            if (!AllowRtfOnly()) return;
+
+            _textBox.SelectionFont = new Font(
+                _textBox.SelectionFont,
+                FontStyle.Italic | _textBox.SelectionFont.Style);
+        }
+
+        public void Cross()
+        {
+            if (!AllowRtfOnly()) return;
+
+            _textBox.SelectionFont = new Font(
+                _textBox.SelectionFont,
+                FontStyle.Strikeout | _textBox.SelectionFont.Style);
+        }
+
+        public void Regular()
+        {
+            if (!AllowRtfOnly()) return;
+
+            _textBox.SelectionFont = new Font(
+                _textBox.SelectionFont,
+                FontStyle.Regular);
+        }
+
+        public void Underline()
+        {
+            if (!AllowRtfOnly()) return;
+
+            _textBox.SelectionFont = new Font(
+                _textBox.SelectionFont,
+                FontStyle.Underline | _textBox.SelectionFont.Style);
+        }
+
+        public bool AllowRtfOnly()
+        {
+            if (IfFileIsRtf()) return true;
+
+            MessageBox.Show("Ошибка: сохраните или откройте файл .rtf!", "Error", MessageBoxButtons.OK);
+            return false;
         }
     }
 }
