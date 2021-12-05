@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -8,21 +9,19 @@ namespace Notepad
     {
         private readonly TabManagerClass _tabs;
 
+        private Theme s_theme = Theme.Light;
         public Notepad()
         {
             InitializeComponent();
 
             _tabs = new TabManagerClass(tabControl);
+            this.SetLightTheme(null,null);
         }
 
         private void AddNewFile_Click(object sender, EventArgs e)
         {
-            var tabClass = new TabClass(contextMenuStrip);
+            var tabClass = new TabClass(contextMenuStrip, s_theme);
             _tabs.Add(tabClass);
-        }
-
-        private void выделитьВесьТекстToolStripMenuItem_Click(object sender, EventArgs e)
-        {
         }
 
         private void OpenFile(object sender, EventArgs e)
@@ -34,7 +33,7 @@ namespace Notepad
 
             try
             {
-                var tabClass = new TabClass(contextMenuStrip, dialog.FileName, File.ReadAllText(dialog.FileName));
+                var tabClass = new TabClass(contextMenuStrip, dialog.FileName, File.ReadAllText(dialog.FileName), s_theme);
                 _tabs.Add(tabClass);
             }
             catch (Exception exeption)
@@ -112,6 +111,27 @@ namespace Notepad
         private void SelectAllAction(object sender, EventArgs e)
         {
             _tabs.GetCurrent()?.SelectAll();
+        }
+
+        private void SetDarkTheme(object? sender, EventArgs? e)
+        {
+            s_theme = Theme.Dark;
+
+            BackColor = Color.Black;
+            menuStrip.BackColor = Color.Black;
+            menuStrip.ForeColor = Color.White;
+
+            _tabs.GetCurrent()?.ChangeTheme(s_theme);
+        }
+        private void SetLightTheme(object? sender, EventArgs? e)
+        {
+            s_theme = Theme.Light;
+
+            BackColor = Color.White;
+            menuStrip.BackColor = Color.White;
+            menuStrip.ForeColor = Color.Black;
+
+            _tabs.ChangeTheme(s_theme);
         }
     }
 }

@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "d4C3JjLl8k8xZPwDT+HBAfTpRtzC+9kJWtzNBStpdFA61yKZvr7M63OyPCfb1dmZZqwcKiJIy493xGDwr+ldvw==",
+  "dgSpecHash": "/fWoS2DFwdTiTZGjTBKhuM+VSn/DJXdZEy/11JAHUCbNd9BvRs9bFcXCmAIlgtHPCLfNV+faSQH9N4IvP5AAug==",
   "success": true,
   "projectFilePath": "C:\\TextEditor\\Notepad.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Andrew Shubnikov\\.nuget\\packages\\fastcoloredtextbox.net5\\2.16.26\\fastcoloredtextbox.net5.2.16.26.nupkg.sha512"
+  ],
   "logs": []
 }

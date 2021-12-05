@@ -64,5 +64,11 @@ namespace Notepad
             if (_tabControl.TabPages.Count != 0)
                 _tabControl.SelectedTab = _tabControl.TabPages[Math.Max(index - 1, 0)];
         }
+
+        public void ChangeTheme(Theme s_theme)
+        {
+            foreach(var item in _tabs) 
+                item.Value.ChangeTheme(s_theme);
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -8,14 +9,14 @@ namespace Notepad
     {
         private readonly RichTextBox _textBox;
 
-        public TabClass(ContextMenuStrip contextMenuStrip) : this(contextMenuStrip, string.Empty, string.Empty)
+        public TabClass(ContextMenuStrip contextMenuStrip, Theme theme) : this(contextMenuStrip, string.Empty, string.Empty, theme)
         {
         }
 
-        public TabClass(ContextMenuStrip contextMenuStrip, string path, string text)
+        public TabClass(ContextMenuStrip contextMenuStrip, string path, string text, Theme theme)
         {
             ContextMenuStrip = contextMenuStrip;
-
+            
             if (!path.Equals(string.Empty))
             {
                 IsTabSaved = true;
@@ -55,6 +56,7 @@ namespace Notepad
                     ContextMenuStrip = ContextMenuStrip
                 };
 
+            ChangeTheme(theme);
             _textBox.TextChanged += TabPage_TextChanged;
             TabPage.Controls.Add(_textBox);
         }
@@ -67,7 +69,7 @@ namespace Notepad
         public string SavedPath { get; set; }
         private ContextMenuStrip ContextMenuStrip { get; }
 
-        private void TabPage_TextChanged(object sender, EventArgs e)
+        private void TabPage_TextChanged(object? sender, EventArgs e)
         {
             IsTabEdited = true;
             Name = $"{FileName}*";
@@ -82,6 +84,29 @@ namespace Notepad
         public void Paste()
         {
             _textBox.Paste();
+        }
+
+        public void Cut()
+        {
+            _textBox.Cut();
+        }
+
+        public void SelectAll()
+        {
+            _textBox.SelectAll();
+        }
+
+        public void Redo()
+        {
+            _textBox.Redo();
+        }
+        public void Undo()
+        {
+            _textBox.Undo();
+        }
+        public void Copy()
+        {
+            _textBox.Copy();
         }
 
         public void Save()
@@ -128,6 +153,22 @@ namespace Notepad
             catch (Exception e)
             {
                 MessageBox.Show($"Ошибка при сохранении файла: {e.Message}", "Error");
+            }
+        }
+
+        public void ChangeTheme(Theme theme)
+        {
+            switch (theme)
+            {
+                case Theme.Dark:
+                    _textBox.ForeColor = Color.White;
+                    _textBox.BackColor = Color.Black;
+                    return;
+                    case Theme.Light:
+                    _textBox.ForeColor = Color.Black;
+                    _textBox.BackColor = Color.White;
+                    return;
+
             }
         }
     }
