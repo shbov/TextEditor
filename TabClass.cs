@@ -6,15 +6,30 @@ using Notepad.Properties;
 
 namespace Notepad
 {
+    /// <summary>
+    ///     Класс, отвечающий за работу вкладки.
+    /// </summary>
     internal class TabClass
     {
         private readonly RichTextBox _textBox;
 
+        /// <summary>
+        ///     Конструктор класса (новый файл).
+        /// </summary>
+        /// <param name="contextMenuStrip">Элемент меню.</param>
+        /// <param name="theme">Тема.</param>
         public TabClass(ContextMenuStrip contextMenuStrip, Theme theme) : this(contextMenuStrip, string.Empty,
             string.Empty, theme)
         {
         }
 
+        /// <summary>
+        ///     Конструктор класса.
+        /// </summary>
+        /// <param name="contextMenuStrip">Элемент меню.</param>
+        /// <param name="path">Путь к файлу.</param>
+        /// <param name="text">Содержимое файла.</param>
+        /// <param name="theme">Тема.</param>
         public TabClass(ContextMenuStrip contextMenuStrip, string path, string text, Theme theme)
         {
             ContextMenuStrip = contextMenuStrip;
@@ -64,11 +79,14 @@ namespace Notepad
         }
 
         public TabPage TabPage { get; }
-        public bool IsTabEdited { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsTabSaved { get; private set; }
-        public string Name { get; set; }
-        public string FileName { get; set; }
-        public string SavedPath { get; set; }
+        private bool IsTabEdited { get; set; }
+        private string Name { get; set; }
+        private string FileName { get; set; }
+        private string SavedPath { get; set; }
         private ContextMenuStrip ContextMenuStrip { get; }
 
         private void TabPage_TextChanged(object? sender, EventArgs e)
@@ -220,7 +238,7 @@ namespace Notepad
                 FontStyle.Underline | _textBox.SelectionFont.Style);
         }
 
-        private bool AllowRtfOnly()
+        public bool AllowRtfOnly()
         {
             if (IfFileIsRtf()) return true;
 
