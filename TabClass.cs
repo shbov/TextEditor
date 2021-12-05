@@ -79,6 +79,11 @@ namespace Notepad
             return Path.GetExtension(SavedPath).Equals(".rtf");
         }
 
+        public void Paste()
+        {
+            _textBox.Paste();
+        }
+
         public void Save()
         {
             if (!IsTabEdited) return;

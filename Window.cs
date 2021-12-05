@@ -62,5 +62,56 @@ namespace Notepad
         {
             _tabs.SaveAll();
         }
+
+        private void CloseForm(object sender, FormClosingEventArgs e)
+        {
+            var unsavedTabs = _tabs.GetUnsaved();
+
+            if (unsavedTabs.Count == 0)
+            {
+                e.Cancel = false;
+                return;
+            }
+
+            var saveOrExit = MessageBox.Show("Не все файлы сохранены. Вы действительно хотите выйти?", "Информация",
+                MessageBoxButtons.OKCancel);
+            if (saveOrExit == DialogResult.OK)
+            {
+                e.Cancel = false;
+                return;
+            }
+
+            e.Cancel = true;
+        }
+
+        private void UndoAction(object sender, EventArgs e)
+        {
+            _tabs.GetCurrent()?.Undo();
+        }
+
+        private void RedoAction(object sender, EventArgs e)
+        {
+            _tabs.GetCurrent()?.Redo();
+        }
+
+        private void CutAction(object sender, EventArgs e)
+        {
+            _tabs.GetCurrent()?.Cut();
+        }
+
+        private void CopyAction(object sender, EventArgs e)
+        {
+            _tabs.GetCurrent()?.Copy();
+        }
+
+        private void PasteAction(object sender, EventArgs e)
+        {
+            _tabs.GetCurrent()?.Paste();
+        }
+
+        private void SelectAllAction(object sender, EventArgs e)
+        {
+            _tabs.GetCurrent()?.SelectAll();
+        }
     }
 }

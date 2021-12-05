@@ -105,7 +105,7 @@ namespace Notepad
             this.toolStripSeparator2,
             this.выйтиToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(90, 36);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(90, 38);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // AddNewFile
@@ -183,7 +183,7 @@ namespace Notepad
             this.toolStripSeparator4,
             this.выделитьВсеToolStripMenuItem});
             this.редактированиеToolStripMenuItem.Name = "редактированиеToolStripMenuItem";
-            this.редактированиеToolStripMenuItem.Size = new System.Drawing.Size(114, 36);
+            this.редактированиеToolStripMenuItem.Size = new System.Drawing.Size(114, 38);
             this.редактированиеToolStripMenuItem.Text = "Правка";
             // 
             // отменитьToolStripMenuItem
@@ -193,6 +193,7 @@ namespace Notepad
             this.отменитьToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
             this.отменитьToolStripMenuItem.Size = new System.Drawing.Size(387, 44);
             this.отменитьToolStripMenuItem.Text = "Отменить";
+            this.отменитьToolStripMenuItem.Click += new System.EventHandler(this.UndoAction);
             // 
             // вернутьToolStripMenuItem
             // 
@@ -202,6 +203,7 @@ namespace Notepad
             | System.Windows.Forms.Keys.Z)));
             this.вернутьToolStripMenuItem.Size = new System.Drawing.Size(387, 44);
             this.вернутьToolStripMenuItem.Text = "Повтор";
+            this.вернутьToolStripMenuItem.Click += new System.EventHandler(this.RedoAction);
             // 
             // toolStripSeparator3
             // 
@@ -214,6 +216,7 @@ namespace Notepad
             this.вырезатьToolStripMenuItem.Name = "вырезатьToolStripMenuItem";
             this.вырезатьToolStripMenuItem.Size = new System.Drawing.Size(387, 44);
             this.вырезатьToolStripMenuItem.Text = "Вырезать";
+            this.вырезатьToolStripMenuItem.Click += new System.EventHandler(this.CutAction);
             // 
             // копироватьToolStripMenuItem
             // 
@@ -222,6 +225,7 @@ namespace Notepad
             this.копироватьToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.копироватьToolStripMenuItem.Size = new System.Drawing.Size(387, 44);
             this.копироватьToolStripMenuItem.Text = "Копировать";
+            this.копироватьToolStripMenuItem.Click += new System.EventHandler(this.CopyAction);
             // 
             // вставитьToolStripMenuItem
             // 
@@ -230,11 +234,13 @@ namespace Notepad
             this.вставитьToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
             this.вставитьToolStripMenuItem.Size = new System.Drawing.Size(387, 44);
             this.вставитьToolStripMenuItem.Text = "Вставить";
+            this.вставитьToolStripMenuItem.Click += new System.EventHandler(this.PasteAction);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(384, 6);
+            this.toolStripSeparator4.Click += new System.EventHandler(this.SelectAllAction);
             // 
             // выделитьВсеToolStripMenuItem
             // 
@@ -253,7 +259,7 @@ namespace Notepad
             this.подчеркнутыйToolStripMenuItem,
             this.зачеркнутыйToolStripMenuItem});
             this.форматированиеToolStripMenuItem.Name = "форматированиеToolStripMenuItem";
-            this.форматированиеToolStripMenuItem.Size = new System.Drawing.Size(226, 36);
+            this.форматированиеToolStripMenuItem.Size = new System.Drawing.Size(226, 38);
             this.форматированиеToolStripMenuItem.Text = "Форматирование";
             // 
             // обычныйToolStripMenuItem
@@ -292,7 +298,7 @@ namespace Notepad
             this.автосохранениеToolStripMenuItem,
             this.темыToolStripMenuItem});
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
-            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(152, 36);
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(152, 38);
             this.настройкиToolStripMenuItem.Text = "Настройки";
             // 
             // автосохранениеToolStripMenuItem
@@ -302,7 +308,7 @@ namespace Notepad
             this.каждые30СекундToolStripMenuItem,
             this.каждуюМинутуToolStripMenuItem});
             this.автосохранениеToolStripMenuItem.Name = "автосохранениеToolStripMenuItem";
-            this.автосохранениеToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.автосохранениеToolStripMenuItem.Size = new System.Drawing.Size(329, 44);
             this.автосохранениеToolStripMenuItem.Text = "Автосохранение";
             // 
             // каждуюСекундуToolStripMenuItem
@@ -329,19 +335,19 @@ namespace Notepad
             this.светлаяToolStripMenuItem,
             this.темнаяToolStripMenuItem});
             this.темыToolStripMenuItem.Name = "темыToolStripMenuItem";
-            this.темыToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.темыToolStripMenuItem.Size = new System.Drawing.Size(329, 44);
             this.темыToolStripMenuItem.Text = "Темы";
             // 
             // светлаяToolStripMenuItem
             // 
             this.светлаяToolStripMenuItem.Name = "светлаяToolStripMenuItem";
-            this.светлаяToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.светлаяToolStripMenuItem.Size = new System.Drawing.Size(235, 44);
             this.светлаяToolStripMenuItem.Text = "Светлая";
             // 
             // темнаяToolStripMenuItem
             // 
             this.темнаяToolStripMenuItem.Name = "темнаяToolStripMenuItem";
-            this.темнаяToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.темнаяToolStripMenuItem.Size = new System.Drawing.Size(235, 44);
             this.темнаяToolStripMenuItem.Text = "Темная";
             // 
             // tabControl
@@ -396,6 +402,7 @@ namespace Notepad
             this.выделитьВсеToolStripMenuItem1.Name = "выделитьВсеToolStripMenuItem1";
             this.выделитьВсеToolStripMenuItem1.Size = new System.Drawing.Size(282, 40);
             this.выделитьВсеToolStripMenuItem1.Text = "Выделить все";
+            this.выделитьВсеToolStripMenuItem1.Click += new System.EventHandler(this.SelectAllAction);
             // 
             // копироватьToolStripMenuItem1
             // 
@@ -403,6 +410,7 @@ namespace Notepad
             this.копироватьToolStripMenuItem1.Name = "копироватьToolStripMenuItem1";
             this.копироватьToolStripMenuItem1.Size = new System.Drawing.Size(282, 40);
             this.копироватьToolStripMenuItem1.Text = "Копировать";
+            this.копироватьToolStripMenuItem1.Click += new System.EventHandler(this.CopyAction);
             // 
             // вставитьToolStripMenuItem1
             // 
@@ -410,6 +418,7 @@ namespace Notepad
             this.вставитьToolStripMenuItem1.Name = "вставитьToolStripMenuItem1";
             this.вставитьToolStripMenuItem1.Size = new System.Drawing.Size(282, 40);
             this.вставитьToolStripMenuItem1.Text = "Вставить";
+            this.вставитьToolStripMenuItem1.Click += new System.EventHandler(this.PasteAction);
             // 
             // toolStripSeparator6
             // 
@@ -422,6 +431,7 @@ namespace Notepad
             this.отменитьToolStripMenuItem1.Name = "отменитьToolStripMenuItem1";
             this.отменитьToolStripMenuItem1.Size = new System.Drawing.Size(282, 40);
             this.отменитьToolStripMenuItem1.Text = "Отменить";
+            this.отменитьToolStripMenuItem1.Click += new System.EventHandler(this.UndoAction);
             // 
             // повторToolStripMenuItem
             // 
@@ -429,6 +439,7 @@ namespace Notepad
             this.повторToolStripMenuItem.Name = "повторToolStripMenuItem";
             this.повторToolStripMenuItem.Size = new System.Drawing.Size(282, 40);
             this.повторToolStripMenuItem.Text = "Повтор";
+            this.повторToolStripMenuItem.Click += new System.EventHandler(this.RedoAction);
             // 
             // Notepad
             // 
@@ -442,6 +453,7 @@ namespace Notepad
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Notepad";
             this.Text = "Notepad";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CloseForm);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.contextMenuStrip.ResumeLayout(false);

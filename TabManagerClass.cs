@@ -32,11 +32,16 @@ namespace Notepad
             return _tabs[_tabControl.SelectedTab];
         }
 
+        public List<TabClass> GetUnsaved()
+        {
+            return _tabs.Where(item => !item.Value.IsTabSaved).Select(item => item.Value).ToList();
+        }
+
         public void SaveAll()
         {
-            var unsavedTabs = _tabs.Where(item => !item.Value.IsTabSaved);
+            var unsavedTabs = GetUnsaved();
             foreach (var item in unsavedTabs)
-                item.Value.Save();
+                item.Save();
         }
 
         public void CloseCurrent()
