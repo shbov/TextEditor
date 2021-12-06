@@ -23,12 +23,12 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Resources\" />
+        <Folder Include="Resources\"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="FastColoredTextBox.Net5" Version="2.16.26" />
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+        <PackageReference Include="FastColoredTextBox.Net5" Version="2.16.26"/>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1"/>
     </ItemGroup>
 
 </Project>

@@ -8,21 +8,21 @@ namespace Notepad
 {
     public partial class Notepad : Form
     {
-        private  TabManagerClass _tabs;
+        private readonly TabManagerClass _tabs;
+        private Settings _settings;
 
         private Theme _theme = Theme.Light;
-        private Settings _settings;
 
         public Notepad()
         {
             InitializeComponent();
-
             _tabs = new TabManagerClass(tabControl);
-            _settings = Settings.Load();
+            _settings = new Settings();
+
             LoadSettings();
         }
 
-        public Notepad(bool isNew) : this()
+        private Notepad(bool isNew) : this()
         {
             AddNewFile_Click(null, null);
         }
@@ -51,7 +51,9 @@ namespace Notepad
                 MessageBox.Show(string.Format(Resources.OpenError, exception.Message), "Error");
             }
         }
-        private TabClass? OpenFileFromPath(string? path) {
+
+        private TabClass? OpenFileFromPath(string? path)
+        {
             if (string.IsNullOrEmpty(path)) return null;
 
             try
@@ -59,16 +61,17 @@ namespace Notepad
                 if (File.Exists(path))
                 {
                     var file = File.ReadAllText(path);
-                    return new TabClass(contextMenuStrip, Path.GetFileName(path), file, _theme);
+                    return new TabClass(contextMenuStrip, path, file, _theme);
                 }
             }
             catch (Exception)
             {
-
+                // ignored
             }
 
             return null;
         }
+
         private void SaveFile(object? sender, EventArgs? e)
         {
             _tabs.GetCurrent()?.Save();
@@ -197,7 +200,7 @@ namespace Notepad
 
             timer.Stop();
             if (every30SecButton.Checked)
-            { 
+            {
                 timer.Interval = 1000 * 30;
                 timer.Start();
                 _settings.Timer = 1000 * 30;
@@ -220,7 +223,8 @@ namespace Notepad
                 timer.Interval = 1000 * 60;
                 timer.Start();
                 _settings.Timer = 1000 * 60;
-            } else
+            }
+            else
             {
                 _settings.Timer = 0;
             }
@@ -270,19 +274,23 @@ namespace Notepad
             Close();
         }
 
-        private void LoadSettings() {
-            if (_settings.Theme == Theme.Dark) SetDarkTheme(null,null);
-            else SetLightTheme(null,null);
+        private void LoadSettings()
+        {
+            var settings = Settings.Load();
 
-            if (_settings.Tabs != null)
+            if (settings.Theme == Theme.Dark) SetDarkTheme(null, null);
+            else SetLightTheme(null, null);
+
+            foreach (var item in settings.Tabs)
             {
-                foreach (var item in _settings.Tabs)
-                    OpenFileFromPath(item);
+                var file = OpenFileFromPath(item);
+                if (file != null) _tabs.Add(file);
             }
 
-            switch (_settings.Timer) {
+            switch (settings.Timer)
+            {
                 case 0:
-                   break;
+                    break;
                 case 1 * 1000:
                     SetTimerEverySec(null, null);
                     break;
@@ -292,12 +300,15 @@ namespace Notepad
                 case 60 * 1000:
                     SetTimerEveryMin(null, null);
                     break;
-
             }
+
+            _settings = settings;
         }
 
-        private void SaveSettings() {
+        private void SaveSettings()
+        {
             _settings.Tabs = _tabs.All();
+
             _settings.Save();
         }
     }

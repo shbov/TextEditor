@@ -12,7 +12,7 @@ namespace Notepad
     internal class TabManagerClass
     {
         private readonly TabControl _tabControl;
-        private  Dictionary<TabPage, TabClass> _tabs = new();
+        private readonly Dictionary<TabPage, TabClass> _tabs = new();
 
         /// <summary>
         ///     Конструктор класса.
@@ -44,10 +44,9 @@ namespace Notepad
             return _tabControl.SelectedTab == null ? null : _tabs[_tabControl.SelectedTab];
         }
 
-        public List<string> All() => _tabs.Where(item => item.Value.IsTabSaved).Select(item => item.Value.SavedPath).ToList();
-        public void SetTabs(Dictionary<TabPage, TabClass> tabs)
+        public List<string> All()
         {
-            _tabs = tabs;
+            return _tabs.Where(item => item.Value.IsTabSaved).Select(item => item.Value.SavedPath).ToList();
         }
 
         /// <summary>
