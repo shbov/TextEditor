@@ -389,3 +389,4 @@ FodyWeavers.xsd
 
 bin/
 obj/
+.DS_Store
