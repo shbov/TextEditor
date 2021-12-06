@@ -7,7 +7,7 @@ using Notepad.Properties;
 namespace Notepad
 {
     /// <summary>
-    ///     Класс, отвечабщий за работу вкладок.
+    ///     Класс, отвечающий за работу вкладок.
     /// </summary>
     internal class TabManagerClass
     {
@@ -26,7 +26,7 @@ namespace Notepad
         /// <summary>
         ///     Добавить новую вкладку.
         /// </summary>
-        /// <param name="tab">Экземпляр класса TabClass</param>
+        /// <param name="tab">Экземпляр класса TabClass.</param>
         public void Add(TabClass tab)
         {
             _tabControl.TabPages.Add(tab.TabPage);
@@ -110,7 +110,7 @@ namespace Notepad
         /// <summary>
         ///     Изменение темы.
         /// </summary>
-        /// <param name="theme">Light/Dark</param>
+        /// <param name="theme">Light/Dark.</param>
         public void ChangeTheme(Theme theme)
         {
             foreach (var item in _tabs)

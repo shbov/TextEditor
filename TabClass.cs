@@ -78,17 +78,27 @@ namespace Notepad
             TabPage.Controls.Add(_textBox);
         }
 
-        public TabPage TabPage { get; }
         /// <summary>
-        /// 
+        ///     Экемпляр класса TabPage.
+        /// </summary>
+        public TabPage TabPage { get; }
+
+        /// <summary>
+        ///     Сохранен ли файл?
         /// </summary>
         public bool IsTabSaved { get; private set; }
+
         private bool IsTabEdited { get; set; }
         private string Name { get; set; }
         private string FileName { get; set; }
         private string SavedPath { get; set; }
         private ContextMenuStrip ContextMenuStrip { get; }
 
+        /// <summary>
+        ///     Событие, которое вызывается при изменении текста в текстбоке.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TabPage_TextChanged(object? sender, EventArgs e)
         {
             IsTabEdited = true;
@@ -96,41 +106,66 @@ namespace Notepad
             TabPage.Text = Name;
         }
 
+        /// <summary>
+        ///     Является ли файл .rtf?
+        /// </summary>
+        /// <returns>true - если да; иначе - false.</returns>
         private bool IfFileIsRtf()
         {
             return Path.GetExtension(SavedPath).Equals(".rtf");
         }
 
+        /// <summary>
+        ///     Скопировать текст.
+        /// </summary>
         public void Paste()
         {
             _textBox.Paste();
         }
 
+        /// <summary>
+        ///     Вырезать текст.
+        /// </summary>
         public void Cut()
         {
             _textBox.Cut();
         }
 
+        /// <summary>
+        ///     Выделить весь текст.
+        /// </summary>
         public void SelectAll()
         {
             _textBox.SelectAll();
         }
 
+        /// <summary>
+        ///     Вернуть как было перед отменой.
+        /// </summary>
         public void Redo()
         {
             _textBox.Redo();
         }
 
+        /// <summary>
+        ///     Отмена предыдущего действия.
+        /// </summary>
         public void Undo()
         {
             _textBox.Undo();
         }
 
+        /// <summary>
+        ///     Копирование выделенного текста.
+        /// </summary>
         public void Copy()
         {
             _textBox.Copy();
         }
 
+        /// <summary>
+        ///     Сохранить файл.
+        /// </summary>
         public void Save()
         {
             if (!IsTabEdited) return;
@@ -155,6 +190,9 @@ namespace Notepad
             }
         }
 
+        /// <summary>
+        ///     Сохранить файл как.
+        /// </summary>
         public void SaveFileAs()
         {
             var dialog = new SaveFileDialog();
@@ -178,6 +216,10 @@ namespace Notepad
             }
         }
 
+        /// <summary>
+        ///     Изменить тему.
+        /// </summary>
+        /// <param name="theme">Тема.</param>
         public void ChangeTheme(Theme theme)
         {
             switch (theme)
@@ -193,6 +235,9 @@ namespace Notepad
             }
         }
 
+        /// <summary>
+        ///     Сделать текст жирным.
+        /// </summary>
         public void Bold()
         {
             if (!AllowRtfOnly()) return;
@@ -202,6 +247,9 @@ namespace Notepad
                 FontStyle.Bold | _textBox.SelectionFont.Style);
         }
 
+        /// <summary>
+        ///     Сделать текст курсивным.
+        /// </summary>
         public void Italic()
         {
             if (!AllowRtfOnly()) return;
@@ -211,6 +259,9 @@ namespace Notepad
                 FontStyle.Italic | _textBox.SelectionFont.Style);
         }
 
+        /// <summary>
+        ///     Сделать текст зачеркнутым.
+        /// </summary>
         public void Cross()
         {
             if (!AllowRtfOnly()) return;
@@ -220,6 +271,9 @@ namespace Notepad
                 FontStyle.Strikeout | _textBox.SelectionFont.Style);
         }
 
+        /// <summary>
+        ///     Сделать текст обычным.
+        /// </summary>
         public void Regular()
         {
             if (!AllowRtfOnly()) return;
@@ -229,6 +283,9 @@ namespace Notepad
                 FontStyle.Regular);
         }
 
+        /// <summary>
+        ///     Сделать текст подчеркнутым.
+        /// </summary>
         public void Underline()
         {
             if (!AllowRtfOnly()) return;
@@ -238,6 +295,10 @@ namespace Notepad
                 FontStyle.Underline | _textBox.SelectionFont.Style);
         }
 
+        /// <summary>
+        ///     Функция, которая разрешает только .rtf файлы.
+        /// </summary>
+        /// <returns>true - если файл .rtf; иначе - уведомление и false.</returns>
         public bool AllowRtfOnly()
         {
             if (IfFileIsRtf()) return true;

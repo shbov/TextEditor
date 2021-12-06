@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Notepad
@@ -11,10 +12,17 @@ namespace Notepad
         [STAThread]
         private static void Main()
         {
+            Application.ThreadException += ThreadException;
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             Application.Run(new Notepad());
+        }
+
+        private static void ThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            MessageBox.Show(e.Exception.Message, "Unhandled Exception");
         }
     }
 }

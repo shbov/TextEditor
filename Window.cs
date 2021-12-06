@@ -91,7 +91,7 @@ namespace Notepad
 
             e.Cancel = true;
         }
-        
+
         private void UndoAction(object? sender, EventArgs? e)
         {
             _tabs.GetCurrent()?.Undo();
@@ -214,7 +214,7 @@ namespace Notepad
 
         private void CloseApp(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }
