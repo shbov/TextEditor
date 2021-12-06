@@ -8,17 +8,18 @@ namespace Notepad
 {
     public partial class Notepad : Form
     {
-        private readonly TabManagerClass _tabs;
+        private  TabManagerClass _tabs;
 
-        private Theme s_theme = Theme.Light;
+        private Theme _theme = Theme.Light;
+        private Settings _settings;
 
         public Notepad()
         {
             InitializeComponent();
 
             _tabs = new TabManagerClass(tabControl);
-            SetLightTheme(null, null);
-            SetTimerEvery30Sec(null, null);
+            _settings = Settings.Load();
+            LoadSettings();
         }
 
         public Notepad(bool isNew) : this()
@@ -28,7 +29,7 @@ namespace Notepad
 
         private void AddNewFile_Click(object? sender, EventArgs? e)
         {
-            var tabClass = new TabClass(contextMenuStrip, s_theme);
+            var tabClass = new TabClass(contextMenuStrip, _theme);
             _tabs.Add(tabClass);
         }
 
@@ -42,7 +43,7 @@ namespace Notepad
             try
             {
                 var tabClass = new TabClass(contextMenuStrip, dialog.FileName, File.ReadAllText(dialog.FileName),
-                    s_theme);
+                    _theme);
                 _tabs.Add(tabClass);
             }
             catch (Exception exception)
@@ -50,7 +51,24 @@ namespace Notepad
                 MessageBox.Show(string.Format(Resources.OpenError, exception.Message), "Error");
             }
         }
+        private TabClass? OpenFileFromPath(string? path) {
+            if (string.IsNullOrEmpty(path)) return null;
 
+            try
+            {
+                if (File.Exists(path))
+                {
+                    var file = File.ReadAllText(path);
+                    return new TabClass(contextMenuStrip, Path.GetFileName(path), file, _theme);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return null;
+        }
         private void SaveFile(object? sender, EventArgs? e)
         {
             _tabs.GetCurrent()?.Save();
@@ -74,6 +92,7 @@ namespace Notepad
         private void CloseForm(object? sender, FormClosingEventArgs e)
         {
             var unsavedTabs = _tabs.GetUnsaved();
+            SaveSettings();
 
             if (unsavedTabs.Count == 0)
             {
@@ -124,24 +143,29 @@ namespace Notepad
 
         private void SetDarkTheme(object? sender, EventArgs? e)
         {
-            s_theme = Theme.Dark;
+            _theme = Theme.Dark;
 
             BackColor = Color.DarkGray;
             menuStrip.BackColor = Color.DarkGray;
             menuStrip.ForeColor = Color.White;
 
-            _tabs.GetCurrent()?.ChangeTheme(s_theme);
+            _tabs.GetCurrent()?.ChangeTheme(_theme);
+            _settings.Theme = _theme;
+            SaveSettings();
         }
 
         private void SetLightTheme(object? sender, EventArgs? e)
         {
-            s_theme = Theme.Light;
+            _theme = Theme.Light;
 
             BackColor = Color.White;
             menuStrip.BackColor = Color.White;
             menuStrip.ForeColor = Color.Black;
 
-            _tabs.ChangeTheme(s_theme);
+            _tabs.ChangeTheme(_theme);
+            _settings.Theme = _theme;
+
+            SaveSettings();
         }
 
         private void SetTimerEverySec(object? sender, EventArgs? e)
@@ -149,9 +173,20 @@ namespace Notepad
             everySecButton.Checked = !everySecButton.Checked;
             every30SecButton.Checked = false;
             everyMinButton.Checked = false;
+
             timer.Stop();
-            timer.Interval = 1000;
-            timer.Start();
+            if (everySecButton.Checked)
+            {
+                timer.Interval = 1000 * 1;
+                timer.Start();
+                _settings.Timer = 1000 * 1;
+            }
+            else
+            {
+                _settings.Timer = 0;
+            }
+
+            SaveSettings();
         }
 
         private void SetTimerEvery30Sec(object? sender, EventArgs? e)
@@ -161,8 +196,16 @@ namespace Notepad
             everyMinButton.Checked = false;
 
             timer.Stop();
-            timer.Interval = 1000 * 30;
-            timer.Start();
+            if (every30SecButton.Checked)
+            { 
+                timer.Interval = 1000 * 30;
+                timer.Start();
+                _settings.Timer = 1000 * 30;
+            }
+            else
+            {
+                _settings.Timer = 0;
+            }
         }
 
         private void SetTimerEveryMin(object? sender, EventArgs? e)
@@ -172,8 +215,17 @@ namespace Notepad
             everyMinButton.Checked = !everyMinButton.Checked;
 
             timer.Stop();
-            timer.Interval = 1000 * 60;
-            timer.Start();
+            if (everyMinButton.Checked)
+            {
+                timer.Interval = 1000 * 60;
+                timer.Start();
+                _settings.Timer = 1000 * 60;
+            } else
+            {
+                _settings.Timer = 0;
+            }
+
+            SaveSettings();
         }
 
         private void TimerTick(object? sender, EventArgs? e)
@@ -214,7 +266,39 @@ namespace Notepad
 
         private void CloseApp(object sender, EventArgs e)
         {
+            SaveSettings();
             Close();
+        }
+
+        private void LoadSettings() {
+            if (_settings.Theme == Theme.Dark) SetDarkTheme(null,null);
+            else SetLightTheme(null,null);
+
+            if (_settings.Tabs != null)
+            {
+                foreach (var item in _settings.Tabs)
+                    OpenFileFromPath(item);
+            }
+
+            switch (_settings.Timer) {
+                case 0:
+                   break;
+                case 1 * 1000:
+                    SetTimerEverySec(null, null);
+                    break;
+                case 30 * 1000:
+                    SetTimerEvery30Sec(null, null);
+                    break;
+                case 60 * 1000:
+                    SetTimerEveryMin(null, null);
+                    break;
+
+            }
+        }
+
+        private void SaveSettings() {
+            _settings.Tabs = _tabs.All();
+            _settings.Save();
         }
     }
 }

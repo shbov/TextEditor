@@ -99,7 +99,7 @@ namespace Notepad
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(11, 4, 0, 4);
-            this.menuStrip.Size = new System.Drawing.Size(1486, 46);
+            this.menuStrip.Size = new System.Drawing.Size(1486, 44);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -117,7 +117,7 @@ namespace Notepad
             this.выйтиToolStripMenuItem,
             this.закрытьПриложениеToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(90, 38);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(90, 36);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // AddNewFile
@@ -215,7 +215,7 @@ namespace Notepad
             this.toolStripSeparator4,
             this.выделитьВсеToolStripMenuItem});
             this.редактированиеToolStripMenuItem.Name = "редактированиеToolStripMenuItem";
-            this.редактированиеToolStripMenuItem.Size = new System.Drawing.Size(114, 38);
+            this.редактированиеToolStripMenuItem.Size = new System.Drawing.Size(114, 36);
             this.редактированиеToolStripMenuItem.Text = "Правка";
             // 
             // отменитьToolStripMenuItem
@@ -292,7 +292,7 @@ namespace Notepad
             this.подчеркнутыйToolStripMenuItem,
             this.зачеркнутыйToolStripMenuItem});
             this.форматированиеToolStripMenuItem.Name = "форматированиеToolStripMenuItem";
-            this.форматированиеToolStripMenuItem.Size = new System.Drawing.Size(226, 38);
+            this.форматированиеToolStripMenuItem.Size = new System.Drawing.Size(226, 36);
             this.форматированиеToolStripMenuItem.Text = "Форматирование";
             // 
             // обычныйToolStripMenuItem
@@ -336,7 +336,7 @@ namespace Notepad
             this.автосохранениеToolStripMenuItem,
             this.темыToolStripMenuItem});
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
-            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(152, 38);
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(152, 36);
             this.настройкиToolStripMenuItem.Text = "Настройки";
             // 
             // автосохранениеToolStripMenuItem
@@ -352,21 +352,21 @@ namespace Notepad
             // everySecButton
             // 
             this.everySecButton.Name = "everySecButton";
-            this.everySecButton.Size = new System.Drawing.Size(349, 44);
+            this.everySecButton.Size = new System.Drawing.Size(359, 44);
             this.everySecButton.Text = "Каждую секунду";
             this.everySecButton.Click += new System.EventHandler(this.SetTimerEverySec);
             // 
             // every30SecButton
             // 
             this.every30SecButton.Name = "every30SecButton";
-            this.every30SecButton.Size = new System.Drawing.Size(349, 44);
+            this.every30SecButton.Size = new System.Drawing.Size(359, 44);
             this.every30SecButton.Text = "Каждые 30 секунд";
             this.every30SecButton.Click += new System.EventHandler(this.SetTimerEvery30Sec);
             // 
             // everyMinButton
             // 
             this.everyMinButton.Name = "everyMinButton";
-            this.everyMinButton.Size = new System.Drawing.Size(349, 44);
+            this.everyMinButton.Size = new System.Drawing.Size(359, 44);
             this.everyMinButton.Text = "Каждую минуту";
             this.everyMinButton.Click += new System.EventHandler(this.SetTimerEveryMin);
             // 
@@ -382,24 +382,24 @@ namespace Notepad
             // светлаяToolStripMenuItem
             // 
             this.светлаяToolStripMenuItem.Name = "светлаяToolStripMenuItem";
-            this.светлаяToolStripMenuItem.Size = new System.Drawing.Size(235, 44);
+            this.светлаяToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.светлаяToolStripMenuItem.Text = "Светлая";
             this.светлаяToolStripMenuItem.Click += new System.EventHandler(this.SetLightTheme);
             // 
             // темнаяToolStripMenuItem
             // 
             this.темнаяToolStripMenuItem.Name = "темнаяToolStripMenuItem";
-            this.темнаяToolStripMenuItem.Size = new System.Drawing.Size(235, 44);
+            this.темнаяToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.темнаяToolStripMenuItem.Text = "Темная";
             this.темнаяToolStripMenuItem.Click += new System.EventHandler(this.SetDarkTheme);
             // 
             // tabControl
             // 
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(0, 46);
+            this.tabControl.Location = new System.Drawing.Point(0, 44);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1486, 914);
+            this.tabControl.Size = new System.Drawing.Size(1486, 916);
             this.tabControl.TabIndex = 2;
             // 
             // contextMenuStrip
@@ -429,7 +429,7 @@ namespace Notepad
             // 
             this.сохранитьФайлToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("сохранитьФайлToolStripMenuItem.Image")));
             this.сохранитьФайлToolStripMenuItem.Name = "сохранитьФайлToolStripMenuItem";
-            this.сохранитьФайлToolStripMenuItem.Size = new System.Drawing.Size(282, 40);
+            this.сохранитьФайлToolStripMenuItem.Size = new System.Drawing.Size(316, 40);
             this.сохранитьФайлToolStripMenuItem.Text = "Сохранить файл";
             this.сохранитьФайлToolStripMenuItem.Click += new System.EventHandler(this.SaveFile);
             // 
@@ -437,20 +437,20 @@ namespace Notepad
             // 
             this.закрытьВкладкуToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("закрытьВкладкуToolStripMenuItem.Image")));
             this.закрытьВкладкуToolStripMenuItem.Name = "закрытьВкладкуToolStripMenuItem";
-            this.закрытьВкладкуToolStripMenuItem.Size = new System.Drawing.Size(282, 40);
+            this.закрытьВкладкуToolStripMenuItem.Size = new System.Drawing.Size(316, 40);
             this.закрытьВкладкуToolStripMenuItem.Text = "Закрыть файл";
             this.закрытьВкладкуToolStripMenuItem.Click += new System.EventHandler(this.CloseTab);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(279, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(313, 6);
             // 
             // отменитьToolStripMenuItem1
             // 
             this.отменитьToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("отменитьToolStripMenuItem1.Image")));
             this.отменитьToolStripMenuItem1.Name = "отменитьToolStripMenuItem1";
-            this.отменитьToolStripMenuItem1.Size = new System.Drawing.Size(282, 40);
+            this.отменитьToolStripMenuItem1.Size = new System.Drawing.Size(316, 40);
             this.отменитьToolStripMenuItem1.Text = "Отменить";
             this.отменитьToolStripMenuItem1.Click += new System.EventHandler(this.UndoAction);
             // 
@@ -458,20 +458,20 @@ namespace Notepad
             // 
             this.повторToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("повторToolStripMenuItem.Image")));
             this.повторToolStripMenuItem.Name = "повторToolStripMenuItem";
-            this.повторToolStripMenuItem.Size = new System.Drawing.Size(282, 40);
+            this.повторToolStripMenuItem.Size = new System.Drawing.Size(316, 40);
             this.повторToolStripMenuItem.Text = "Повтор";
             this.повторToolStripMenuItem.Click += new System.EventHandler(this.RedoAction);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(279, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(313, 6);
             // 
             // вырезатьToolStripMenuItem1
             // 
             this.вырезатьToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("вырезатьToolStripMenuItem1.Image")));
             this.вырезатьToolStripMenuItem1.Name = "вырезатьToolStripMenuItem1";
-            this.вырезатьToolStripMenuItem1.Size = new System.Drawing.Size(282, 40);
+            this.вырезатьToolStripMenuItem1.Size = new System.Drawing.Size(316, 40);
             this.вырезатьToolStripMenuItem1.Text = "Вырезать";
             this.вырезатьToolStripMenuItem1.Click += new System.EventHandler(this.CutAction);
             // 
@@ -479,7 +479,7 @@ namespace Notepad
             // 
             this.копироватьToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("копироватьToolStripMenuItem1.Image")));
             this.копироватьToolStripMenuItem1.Name = "копироватьToolStripMenuItem1";
-            this.копироватьToolStripMenuItem1.Size = new System.Drawing.Size(282, 40);
+            this.копироватьToolStripMenuItem1.Size = new System.Drawing.Size(316, 40);
             this.копироватьToolStripMenuItem1.Text = "Копировать";
             this.копироватьToolStripMenuItem1.Click += new System.EventHandler(this.CopyAction);
             // 
@@ -487,7 +487,7 @@ namespace Notepad
             // 
             this.вставитьToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("вставитьToolStripMenuItem1.Image")));
             this.вставитьToolStripMenuItem1.Name = "вставитьToolStripMenuItem1";
-            this.вставитьToolStripMenuItem1.Size = new System.Drawing.Size(282, 40);
+            this.вставитьToolStripMenuItem1.Size = new System.Drawing.Size(316, 40);
             this.вставитьToolStripMenuItem1.Text = "Вставить";
             this.вставитьToolStripMenuItem1.Click += new System.EventHandler(this.PasteAction);
             // 
@@ -495,47 +495,47 @@ namespace Notepad
             // 
             this.выделитьВсеToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("выделитьВсеToolStripMenuItem1.Image")));
             this.выделитьВсеToolStripMenuItem1.Name = "выделитьВсеToolStripMenuItem1";
-            this.выделитьВсеToolStripMenuItem1.Size = new System.Drawing.Size(282, 40);
+            this.выделитьВсеToolStripMenuItem1.Size = new System.Drawing.Size(316, 40);
             this.выделитьВсеToolStripMenuItem1.Text = "Выделить все";
             this.выделитьВсеToolStripMenuItem1.Click += new System.EventHandler(this.SelectAllAction);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(279, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(313, 6);
             // 
             // обычныйToolStripMenuItem1
             // 
             this.обычныйToolStripMenuItem1.Name = "обычныйToolStripMenuItem1";
-            this.обычныйToolStripMenuItem1.Size = new System.Drawing.Size(282, 40);
+            this.обычныйToolStripMenuItem1.Size = new System.Drawing.Size(316, 40);
             this.обычныйToolStripMenuItem1.Text = "Обычный";
             this.обычныйToolStripMenuItem1.Click += new System.EventHandler(this.MakeRegularFont);
             // 
             // курсивныйToolStripMenuItem1
             // 
             this.курсивныйToolStripMenuItem1.Name = "курсивныйToolStripMenuItem1";
-            this.курсивныйToolStripMenuItem1.Size = new System.Drawing.Size(282, 40);
+            this.курсивныйToolStripMenuItem1.Size = new System.Drawing.Size(316, 40);
             this.курсивныйToolStripMenuItem1.Text = "Курсивный";
             this.курсивныйToolStripMenuItem1.Click += new System.EventHandler(this.MakeItalicFont);
             // 
             // жирныйToolStripMenuItem1
             // 
             this.жирныйToolStripMenuItem1.Name = "жирныйToolStripMenuItem1";
-            this.жирныйToolStripMenuItem1.Size = new System.Drawing.Size(282, 40);
+            this.жирныйToolStripMenuItem1.Size = new System.Drawing.Size(316, 40);
             this.жирныйToolStripMenuItem1.Text = "Жирный";
             this.жирныйToolStripMenuItem1.Click += new System.EventHandler(this.MakeBoldFont);
             // 
             // подчеркнутыйToolStripMenuItem1
             // 
             this.подчеркнутыйToolStripMenuItem1.Name = "подчеркнутыйToolStripMenuItem1";
-            this.подчеркнутыйToolStripMenuItem1.Size = new System.Drawing.Size(282, 40);
+            this.подчеркнутыйToolStripMenuItem1.Size = new System.Drawing.Size(316, 40);
             this.подчеркнутыйToolStripMenuItem1.Text = "Подчеркнутый";
             this.подчеркнутыйToolStripMenuItem1.Click += new System.EventHandler(this.MakeUnderlineFont);
             // 
             // зачеркнутыйToolStripMenuItem1
             // 
             this.зачеркнутыйToolStripMenuItem1.Name = "зачеркнутыйToolStripMenuItem1";
-            this.зачеркнутыйToolStripMenuItem1.Size = new System.Drawing.Size(282, 40);
+            this.зачеркнутыйToolStripMenuItem1.Size = new System.Drawing.Size(316, 40);
             this.зачеркнутыйToolStripMenuItem1.Text = "Зачеркнутый";
             this.зачеркнутыйToolStripMenuItem1.Click += new System.EventHandler(this.MakeCrossFont);
             // 

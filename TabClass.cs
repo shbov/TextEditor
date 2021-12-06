@@ -91,7 +91,7 @@ namespace Notepad
         private bool IsTabEdited { get; set; }
         private string Name { get; set; }
         private string FileName { get; set; }
-        private string SavedPath { get; set; }
+        public string SavedPath { get; set; }
         private ContextMenuStrip ContextMenuStrip { get; }
 
         /// <summary>
