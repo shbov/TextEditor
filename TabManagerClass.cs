@@ -43,7 +43,11 @@ namespace Notepad
         {
             return _tabControl.SelectedTab == null ? null : _tabs[_tabControl.SelectedTab];
         }
-
+        
+/// <summary>
+/// Получить список всех файлов.
+/// </summary>
+/// <returns>Список всех файлов.</returns>
         public List<string> All()
         {
             return _tabs.Where(item => item.Value.IsTabSaved).Select(item => item.Value.SavedPath).ToList();

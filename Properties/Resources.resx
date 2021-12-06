@@ -138,4 +138,7 @@
     <data name="SaveBeforeExit" xml:space="preserve">
         <value>Не все файлы сохранены. Вы действительно хотите выйти?</value>
     </data>
+    <data name="ErrorWhileSaving" xml:space="preserve">
+        <value>Ошибка при сохранении настроек!</value>
+    </data>
 </root>

@@ -5,12 +5,13 @@ using System.Runtime.Serialization;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Notepad.Properties;
 
 namespace Notepad
 {
     internal class Settings
     {
-        [DataMember] public List<string> Tabs { get; set; }
+        [DataMember] public List<string> Tabs { get; set; } = new();
         [DataMember] public int Timer { get; set; }
 
         [JsonConverter(typeof(StringEnumConverter))]
@@ -20,16 +21,13 @@ namespace Notepad
         {
             try
             {
-                var file = File.ReadAllText("settings.json");
-                if (!string.IsNullOrEmpty(file))
-                    return JsonConvert.DeserializeObject<Settings>(file) ?? LoadEmptySettings();
+                return JsonConvert.DeserializeObject<Settings>(File.ReadAllText("settings.json"))
+                       ?? LoadEmptySettings();
             }
             catch (Exception)
             {
                 return LoadEmptySettings();
             }
-
-            return LoadEmptySettings();
         }
 
         private static Settings LoadEmptySettings()
@@ -49,9 +47,9 @@ namespace Notepad
                 var file = JsonConvert.SerializeObject(this, Formatting.Indented);
                 File.WriteAllText("settings.json", file);
             }
-            catch (Exception exception)
+            catch (Exception)
             {
-                MessageBox.Show("Ошибка при сохранении настроек!");
+                MessageBox.Show(Resources.ErrorWhileSaving);
             }
         }
     }

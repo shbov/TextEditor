@@ -299,7 +299,7 @@ namespace Notepad
         ///     Функция, которая разрешает только .rtf файлы.
         /// </summary>
         /// <returns>true - если файл .rtf; иначе - уведомление и false.</returns>
-        public bool AllowRtfOnly()
+        private bool AllowRtfOnly()
         {
             if (IfFileIsRtf()) return true;
 

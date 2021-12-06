@@ -70,6 +70,15 @@ namespace Notepad.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ошибка при сохранении настроек!.
+        /// </summary>
+        internal static string ErrorWhileSaving {
+            get {
+                return ResourceManager.GetString("ErrorWhileSaving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ошибка: сохраните или откройте файл .rtf!.
         /// </summary>
         internal static string OnlyRtf {
