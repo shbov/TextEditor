@@ -296,6 +296,19 @@ namespace Notepad
         }
 
         /// <summary>
+        ///     Изменить шрифт выделенного текста.
+        /// </summary>
+        /// <param name="font">Шрифт</param>
+        public void Font(Font font)
+        {
+            if (!AllowRtfOnly()) return;
+
+            _textBox.SelectionFont = new Font(
+                font,
+                _textBox.SelectionFont.Style);
+        }
+
+        /// <summary>
         ///     Функция, которая разрешает только .rtf файлы.
         /// </summary>
         /// <returns>true - если файл .rtf; иначе - уведомление и false.</returns>

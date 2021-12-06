@@ -311,5 +311,11 @@ namespace Notepad
 
             _settings.Save();
         }
+
+        private void ChangeFont(object sender, EventArgs e)
+        {
+            var file = new FontDialog();
+            if (file.ShowDialog() == DialogResult.OK) _tabs.GetCurrent()?.Font(file.Font);
+        }
     }
 }
