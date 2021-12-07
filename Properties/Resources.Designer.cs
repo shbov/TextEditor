@@ -79,6 +79,15 @@ namespace Notepad.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ошибка при выполнении.
+        /// </summary>
+        internal static string ErrorWhileUsing {
+            get {
+                return ResourceManager.GetString("ErrorWhileUsing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ошибка: сохраните или откройте файл .rtf!.
         /// </summary>
         internal static string OnlyRtf {

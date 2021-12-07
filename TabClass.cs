@@ -33,7 +33,6 @@ namespace Notepad
         public TabClass(ContextMenuStrip contextMenuStrip, string path, string text, Theme theme)
         {
             ContextMenuStrip = contextMenuStrip;
-
             if (!path.Equals(string.Empty))
             {
                 IsTabSaved = true;
@@ -74,7 +73,7 @@ namespace Notepad
                 };
 
             ChangeTheme(theme);
-            _textBox.TextChanged += TabPage_TextChanged;
+            _textBox.TextChanged += TabPageTextChanged;
             TabPage.Controls.Add(_textBox);
         }
 
@@ -91,7 +90,12 @@ namespace Notepad
         private bool IsTabEdited { get; set; }
         private string Name { get; set; }
         private string FileName { get; set; }
-        public string SavedPath { get; set; }
+
+        /// <summary>
+        ///     Путь к файлу.
+        /// </summary>
+        public string SavedPath { get; private set; }
+
         private ContextMenuStrip ContextMenuStrip { get; }
 
         /// <summary>
@@ -99,7 +103,7 @@ namespace Notepad
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void TabPage_TextChanged(object? sender, EventArgs e)
+        private void TabPageTextChanged(object? sender, EventArgs e)
         {
             IsTabEdited = true;
             Name = $"{FileName}*";

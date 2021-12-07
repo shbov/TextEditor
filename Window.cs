@@ -154,6 +154,7 @@ namespace Notepad
 
             _tabs.GetCurrent()?.ChangeTheme(_theme);
             _settings.Theme = _theme;
+
             SaveSettings();
         }
 

@@ -11,12 +11,28 @@ namespace Notepad
 {
     internal class Settings
     {
-        [DataMember] public List<string> Tabs { get; set; } = new();
-        [DataMember] public int Timer { get; set; }
+        /// <summary>
+        ///     Список путей всех открытых файлов.
+        /// </summary>
+        [DataMember]
+        public List<string> Tabs { get; set; } = new();
 
+        /// <summary>
+        ///     Таймер.
+        /// </summary>
+        [DataMember]
+        public int Timer { get; set; }
+
+        /// <summary>
+        ///     Тема.
+        /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
         public Theme Theme { get; set; }
 
+        /// <summary>
+        ///     Загрузить настройки.
+        /// </summary>
+        /// <returns>Настройки.</returns>
         public static Settings Load()
         {
             try
@@ -30,6 +46,10 @@ namespace Notepad
             }
         }
 
+        /// <summary>
+        ///     Загрузить дефолтные настройки.
+        /// </summary>
+        /// <returns>Настройки.</returns>
         private static Settings LoadEmptySettings()
         {
             return new Settings
@@ -40,6 +60,9 @@ namespace Notepad
             };
         }
 
+        /// <summary>
+        ///     Сохранить настройки.
+        /// </summary>
         public void Save()
         {
             try

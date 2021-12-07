@@ -141,4 +141,7 @@
     <data name="ErrorWhileSaving" xml:space="preserve">
         <value>Ошибка при сохранении настроек!</value>
     </data>
+    <data name="ErrorWhileUsing" xml:space="preserve">
+        <value>Ошибка при выполнении</value>
+    </data>
 </root>

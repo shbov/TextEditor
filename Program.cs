@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using System.Windows.Forms;
+using Notepad.Properties;
 
 namespace Notepad
 {
@@ -22,7 +23,7 @@ namespace Notepad
 
         private static void ThreadException(object sender, ThreadExceptionEventArgs e)
         {
-            MessageBox.Show(e.Exception.Message, "Unhandled Exception");
+            MessageBox.Show(e.Exception.Message, Resources.ErrorWhileUsing);
         }
     }
 }
