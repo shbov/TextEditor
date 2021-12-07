@@ -91,6 +91,7 @@ namespace Notepad
         ///// Есть ли изменения в файле?
         /// </summary>
         public bool IsTabEdited { get; set; }
+
         private string Name { get; set; }
         private string FileName { get; set; }
 
