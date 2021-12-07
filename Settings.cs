@@ -9,6 +9,9 @@ using Notepad.Properties;
 
 namespace Notepad
 {
+    /// <summary>
+    /// Класс, отвечающий за настройки.
+    /// </summary>
     internal class Settings
     {
         /// <summary>

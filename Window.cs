@@ -6,6 +6,9 @@ using Notepad.Properties;
 
 namespace Notepad
 {
+    /// <summary>
+    /// Класс, отвечающий за работу формы приложения.
+    /// </summary>
     public partial class Notepad : Form
     {
         private readonly TabManagerClass _tabs;
@@ -13,6 +16,9 @@ namespace Notepad
 
         private Theme _theme = Theme.Light;
 
+        /// <summary>
+        // Конструктор класса.
+        /// </summary>
         public Notepad()
         {
             InitializeComponent();

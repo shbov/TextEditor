@@ -215,7 +215,6 @@ namespace Notepad
                 Name = Path.GetFileName(dialog.FileName);
                 FileName = Name;
                 SavedPath = dialog.FileName;
-
                 TabPage.Text = Name;
             }
             catch (Exception e)
