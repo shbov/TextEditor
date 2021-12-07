@@ -59,7 +59,7 @@ namespace Notepad
         /// <returns>Список несохраненных файлов.</returns>
         public List<TabClass> GetUnsaved()
         {
-            return _tabs.Where(item => !item.Value.IsTabSaved).Select(item => item.Value).ToList();
+            return _tabs.Where(item => item.Value.IsTabEdited).Select(item => item.Value).ToList();
         }
 
         /// <summary>

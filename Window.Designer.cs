@@ -57,6 +57,7 @@ namespace Notepad
             this.жирныйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.подчеркнутыйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.зачеркнутыйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.шрифтToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.автосохранениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.everySecButton = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,9 +84,8 @@ namespace Notepad
             this.жирныйToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.подчеркнутыйToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.зачеркнутыйToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.timer = new System.Windows.Forms.Timer(this.components);
-            this.шрифтToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.шрифтToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.menuStrip.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -101,7 +101,7 @@ namespace Notepad
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(11, 4, 0, 4);
-            this.menuStrip.Size = new System.Drawing.Size(1486, 44);
+            this.menuStrip.Size = new System.Drawing.Size(1486, 46);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -178,6 +178,9 @@ namespace Notepad
             // 
             this.сохранитьВсеФайлыToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("сохранитьВсеФайлыToolStripMenuItem.Image")));
             this.сохранитьВсеФайлыToolStripMenuItem.Name = "сохранитьВсеФайлыToolStripMenuItem";
+            this.сохранитьВсеФайлыToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
             this.сохранитьВсеФайлыToolStripMenuItem.Size = new System.Drawing.Size(605, 44);
             this.сохранитьВсеФайлыToolStripMenuItem.Text = "Сохранить все файлы";
             this.сохранитьВсеФайлыToolStripMenuItem.Click += new System.EventHandler(this.SaveAllFiles);
@@ -191,6 +194,7 @@ namespace Notepad
             // 
             this.выйтиToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("выйтиToolStripMenuItem.Image")));
             this.выйтиToolStripMenuItem.Name = "выйтиToolStripMenuItem";
+            this.выйтиToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
             this.выйтиToolStripMenuItem.Size = new System.Drawing.Size(605, 44);
             this.выйтиToolStripMenuItem.Text = "Закрыть файл";
             this.выйтиToolStripMenuItem.Click += new System.EventHandler(this.CloseTab);
@@ -333,6 +337,13 @@ namespace Notepad
             this.зачеркнутыйToolStripMenuItem.Text = "Зачеркнутый";
             this.зачеркнутыйToolStripMenuItem.Click += new System.EventHandler(this.MakeCrossFont);
             // 
+            // шрифтToolStripMenuItem
+            // 
+            this.шрифтToolStripMenuItem.Name = "шрифтToolStripMenuItem";
+            this.шрифтToolStripMenuItem.Size = new System.Drawing.Size(311, 44);
+            this.шрифтToolStripMenuItem.Text = "Шрифт";
+            this.шрифтToolStripMenuItem.Click += new System.EventHandler(this.ChangeFont);
+            // 
             // настройкиToolStripMenuItem
             // 
             this.настройкиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -399,10 +410,10 @@ namespace Notepad
             // tabControl
             // 
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(0, 44);
+            this.tabControl.Location = new System.Drawing.Point(0, 46);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1486, 916);
+            this.tabControl.Size = new System.Drawing.Size(1486, 914);
             this.tabControl.TabIndex = 2;
             // 
             // contextMenuStrip
@@ -427,7 +438,7 @@ namespace Notepad
             this.зачеркнутыйToolStripMenuItem1,
             this.шрифтToolStripMenuItem1});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(317, 626);
+            this.contextMenuStrip.Size = new System.Drawing.Size(283, 582);
             // 
             // сохранитьФайлToolStripMenuItem
             // 
@@ -543,23 +554,16 @@ namespace Notepad
             this.зачеркнутыйToolStripMenuItem1.Text = "Зачеркнутый";
             this.зачеркнутыйToolStripMenuItem1.Click += new System.EventHandler(this.MakeCrossFont);
             // 
-            // timer
-            // 
-            this.timer.Tick += new System.EventHandler(this.TimerTick);
-            // 
-            // шрифтToolStripMenuItem
-            // 
-            this.шрифтToolStripMenuItem.Name = "шрифтToolStripMenuItem";
-            this.шрифтToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
-            this.шрифтToolStripMenuItem.Text = "Шрифт";
-            this.шрифтToolStripMenuItem.Click += new System.EventHandler(this.ChangeFont);
-            // 
             // шрифтToolStripMenuItem1
             // 
             this.шрифтToolStripMenuItem1.Name = "шрифтToolStripMenuItem1";
-            this.шрифтToolStripMenuItem1.Size = new System.Drawing.Size(316, 40);
+            this.шрифтToolStripMenuItem1.Size = new System.Drawing.Size(282, 40);
             this.шрифтToolStripMenuItem1.Text = "Шрифт";
             this.шрифтToolStripMenuItem1.Click += new System.EventHandler(this.ChangeFont);
+            // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.TimerTick);
             // 
             // Notepad
             // 
